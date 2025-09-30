@@ -8,7 +8,7 @@
 ![Linguagem](https://img.shields.io/github/languages/top/krosct/Projeto-ESS)
 ![Feito com PyTorch](https://img.shields.io/badge/Feito%20com-PyTorch-EE4C2C?logo=pytorch)
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg?logo=python&logoColor=yellow)
-![Acurácia do Modelo](https://img.shields.io/badge/Acurácia-00%-success)
+![Acurácia do Modelo](https://img.shields.io/badge/Acurácia-00%25-success)
 ![Dataset](https://img.shields.io/badge/Dataset-TO%20DEFINE-orange)
 <!-- ![Feito com TensorFlow](https://img.shields.io/badge/Feito%20com-TensorFlow-FF6F00?logo=tensorflow) -->
 ## 📖 Descrição Geral do Projeto
@@ -37,10 +37,10 @@ A equipe é composta por membros dedicados, cada um com um papel fundamental no 
 | Membro              | Papel                      | GitHub                                        |
 | ------------------- | -------------------------- | --------------------------------------------- |
 | **Gabriel Monteiro** | 🤵 Product Owner (P.O.)    | [Link para o perfil](https://github.com/krosct) |
-| **Charlys Augusto** |  🧑‍💻 Scrum Master         | [Link para o perfil](https://github.com/user) |
-| **João Victor** | ⚙️ Backend Developer       | [Link para o perfil](https://github.com/user) |
-| **Victor Mateus** | ⚙️ Backend Developer       | [Link para o perfil](https://github.com/user) |
-| **André Vinicius** | 🎨 Frontend Developer      | [Link para o perfil](https://github.com/user) |
+| **Charlys Augusto** |  🧑‍💻 Scrum Master         | [Link para o perfil](https://github.com/charlysfarias) |
+| **João Victor** | ⚙️ Backend Developer       | [Link para o perfil](https://github.com/jvictornobre27) |
+| **Victor Mateus** | ⚙️ Backend Developer       | [Link para o perfil](https://github.com/VictorMaPereira) |
+| **André Vinicius** | 🎨 Frontend Developer      | [Link para o perfil](https://github.com/decocampos) |
 | **Luiz Carlos** | 🎨 Frontend Developer      | [Link para o perfil](https://github.com/user) |
 | **Igor Dario** | 🧪 QA & DevOps Engineer    | [Link para o perfil](https://github.com/user) |
 
@@ -79,6 +79,7 @@ O projeto está organizado em uma estrutura monorepo para facilitar o desenvolvi
 ├── 📄 README.md
 └── ...
 ```
+
 ---
 
 ## 🚀 Guia de Build e Instalação Local
