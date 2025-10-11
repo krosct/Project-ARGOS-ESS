@@ -41,7 +41,7 @@ A equipe é composta por membros dedicados, cada um com um papel fundamental no 
 | **João Victor** | ⚙️ Backend Developer       | [Link para o perfil](https://github.com/jvictornobre27) |
 | **Victor Mateus** | ⚙️ Backend Developer       | [Link para o perfil](https://github.com/VictorMaPereira) |
 | **André Vinicius** | 🎨 Frontend Developer      | [Link para o perfil](https://github.com/decocampos) |
-| **Luiz Carlos** | 🎨 Frontend Developer      | [Link para o perfil](https://github.com/user) |
+| **Luiz Carlos** | 🎨 Frontend Developer      | [Link para o perfil](https://github.com/lcs8) |
 | **Igor Dario** | 🧪 QA & DevOps Engineer    | [Link para o perfil](https://github.com/user) |
 
 ---
