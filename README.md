@@ -28,33 +28,56 @@ O objetivo principal é desenvolver uma solução tecnológica robusta e acessí
 - **Base de Conhecimento:** Construir um backend escalável que gerencie as análises, armazene dados para retroalimentar os modelos e sirva uma API para o frontend.
 - **Processo de Engenharia de Software:** Aplicar conceitos e práticas da engenharia de software, incluindo metodologias ágeis (Scrum/Kanban), controle de versão (Git), testes automatizados e integração contínua para garantir a qualidade e a manutenibilidade do sistema.
 
+```mermaid
+graph TD
+    User((Usuário))
+    
+    subgraph "Frontend (React/Web)"
+        UI[Interface do Usuário]
+    end
+    
+    subgraph "Backend System"
+        API[API Gateway / Controller]
+        DB[(Banco de Dados)]
+        Auth[Serviço de Autenticação]
+    end
+    
+    subgraph "Intelligence Layer"
+        IA[Serviço de IA / PyTorch]
+    end
+
+    User -->|Acessa via HTTPS| UI
+    UI -->|Requisições JSON| API
+    API -->|Leitura/Escrita| DB
+    API -->|Validação de Token| Auth
+    API -->|Envia Texto para Análise| IA
+    IA -->|Retorna Score de Veracidade| API
+```
 ---
 
 ## 👥 Nossa Equipe
 
 A equipe é composta por membros dedicados, cada um com um papel fundamental no ciclo de vida do projeto.
 
-| Membro              | Papel                      | GitHub                                        |
-| ------------------- | -------------------------- | --------------------------------------------- |
-| **Gabriel Monteiro** | 🤵 Product Owner (P.O.)    | [Link para o perfil](https://github.com/krosct) |
-| **Charlys Augusto** |  🧑‍💻 Scrum Master         | [Link para o perfil](https://github.com/charlysfarias) |
-| **João Victor** | ⚙️ Backend Developer       | [Link para o perfil](https://github.com/jvictornobre27) |
-| **Victor Mateus** | ⚙️ Backend Developer       | [Link para o perfil](https://github.com/VictorMaPereira) |
-| **André Vinicius** | 🎨 Frontend Developer      | [Link para o perfil](https://github.com/decocampos) |
-| **Luiz Carlos** | 🎨 Frontend Developer      | [Link para o perfil](https://github.com/lcs8) |
-| **Igor Dario** | 🧪 QA & DevOps Engineer    | [Link para o perfil](https://github.com/user) |
+| Membro               | Papel                                    | GitHub                                                 |
+| -------------------- | ---------------------------------------- | ------------------------------------------------------ |
+| **André Vinicius**   | 🤵 Product Owner (P.O.) & Master DevOps | [Link para o perfil](https://github.com/decocampos)     |
+| **Charlys Augusto**  | ⚙️ API & DB & Backend Developer         | [Link para o perfil](https://github.com/charlysfarias)  |
+| **Gabriel Monteiro** | 🛡️ Architecture & Security Engineer     | [Link para o perfil](https://github.com/krosct)         |
+| **João Victor**      | 🧪 Test & Framework Engineer            | [Link para o perfil](https://github.com/jvictornobre27) |
+| **Luiz Carlos**      | 🎨 UI/UX & Frontend Developer           | [Link para o perfil](https://github.com/lcs8)           |
 
 ---
 
 ## 📋 Requisitos do Projeto
 
-### Requisitos Funcionais (RF)
+### Requisitos Funcionais (FR)
 
-* *(A serem definidos em breve)*
+➡️ **[Acesse os Requisitos Funcionais (FRs.md)](./FRs.md)**
 
-### Requisitos Não Funcionais (RNF)
+### Requisitos Não Funcionais (NFR)
 
-* *(A serem definidos em breve)*
+➡️ **[Acesse os Requisitos Não Funcionais (NFRs.md)](./NFRs.md)**
 
 ---
 
@@ -112,6 +135,6 @@ Quer começar a contribuir? Temos algumas tarefas iniciais que são perfeitas pa
 
 ## 🔗 Links Importantes
 
-- **Quadro de Tarefas (Jira/Trello):** *[Link para o quadro do projeto]*
+- **Quadro de Tarefas (Jira/Trello):** *[Link para o quadro do projeto](https://andre-vinicius-campos-lucena.atlassian.net/jira/software/projects/ARGOS/boards/2)*
 - **Protótipo de Design (Figma):** *[Link para o design no Figma]*
 - **Documentação da API (Swagger/Postman):** *[Link para a documentação da API]*
