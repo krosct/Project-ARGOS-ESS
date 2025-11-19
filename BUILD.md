@@ -1,5 +1,30 @@
 # Build & Setup
 
+# 🐳 Opção 1: Rodando com Docker (Recomendado)
+
+Esta é a maneira mais rápida de rodar a aplicação completa (Frontend + Backend + Banco de Dados) sem configurar ambientes locais.
+
+## 1. Pré-requisitos
+
+* Docker
+* Docker Compose
+
+## 2. Execução
+
+1. Na raiz do projeto, execute:
+
+```bash
+docker-compose up --build
+```
+
+2. Acesse os serviços:
+
+* **Frontend**: http://localhost:3000
+* **API Backend**: http://localhost:8000/docs
+
+# 🐍 Opção 2: Instalação Manual (Desenvolvimento Local)
+Use esta opção se precisar debugar código ou se não quiser usar Docker.
+
 ## 1. Pré-requisitos
 
 * **Python 3.11+** (ou versão compatível)
@@ -59,6 +84,7 @@ pip install -r requirements.txt
    ```
    API_KEY=your_api_key_here
    MODEL_PATH=path_to_trained_model
+   DATABASE_URL=postgresql://user:pass@localhost:5432/argos
    ```
 
 ---
@@ -70,17 +96,3 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
-
----
-
-## 7. Testes (opcional)
-
-Se houver testes automatizados, rode:
-
-```bash
-pytest tests/
-```
-
----
-
-Quer que eu faça isso?
