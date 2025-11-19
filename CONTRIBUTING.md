@@ -20,31 +20,20 @@ O **Project Argos** é uma plataforma de IA para detecção de fake news. Estamo
 
 ## 🛠️ Configurando o Ambiente
 
-### Pré-requisitos
-- Python 3.11+
-- Git configurado em sua máquina
-
 ### Setup
 
-```bash
-# Clone o repositório
-git clone https://github.com/krosct/Project-ARGOS-ESS.git
-cd Project-ARGOS-ESS
-
-# Crie e ative o ambiente virtual
-python -m venv venv
-source venv/bin/activate  # macOS/Linux
-# .\venv\Scripts\activate  # Windows
-
-# Instale as dependências
-pip install -r requirements.txt
-```
+➡️ **[Acesse o Guia de Build (BUILD.md)](./BUILD.md)**
 
 ---
 
 ## 🔄 Fluxo de Contribuição
 
 ### 1. Crie uma Branch
+
+Para manter a segurança e organização do código, seguimos regras estritas:
+* `main`: Contém apenas código de produção estável.
+  * 🚫 Proibido: Fazer commit direto (push) na main.
+  * ✅ Permitido: Apenas via Pull Request (PR) aprovado.
 
 Nunca trabalhe direto na `main`. Use prefixos:
 
@@ -92,6 +81,13 @@ Ao abrir um PR, inclua:
 - **Como testar**: Liste os passos para validar suas alterações
 
 Aguarde a revisão de pelo menos um membro da equipe. Esteja aberto a feedbacks e ajustes!
+
+#### Para que seu código seja aceito, ele deve passar pelo seguinte checklist:
+
+1. **Sync**: Garanta que sua branch está atualizada com a main (git pull origin main).
+1. **Testes**: Rode os testes locais antes de enviar (pytest).
+1. **Code** Review: O PR exige aprovação de pelo menos 1 membro da equipe.
+1. **Descrição**: Preencha o template do PR explicando o que foi feito.
 
 ---
 
