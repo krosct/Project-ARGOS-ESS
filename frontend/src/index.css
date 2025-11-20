@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --muted: #555555;
+}
+
+.panel {
+  @apply bg-gray-50 p-5 rounded-2xl border border-gray-200 shadow-md;
+}
+
+.animated-intro {
+  @apply text-5xl font-extrabold leading-tight text-black;
+}
+
+@media (max-width: 800px) {
+  .animated-intro {
+    @apply text-xl;
+  }
+}
+
+.fade-enter { opacity: 0; transform: translateY(8px); }
+.fade-enter-active { opacity: 1; transform: translateY(0); transition: all 300ms ease; }
