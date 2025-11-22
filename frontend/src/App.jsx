@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import Sidebar from './components/Sidebar'
-import AnimatedIntro from './components/AnimatedIntro'
-import CheckPanel from './components/CheckPanel'
-import HistoryPanel from './components/HistoryPanel'
-import { HistoryProvider } from './hooks/useHistory'
+import React, { useState } from "react";
+import Sidebar from "./components/Sidebar";
+import AnimatedIntro from "./components/AnimatedIntro";
+import CheckPanel from "./components/CheckPanel";
+import HistoryPanel from "./components/HistoryPanel";
+import { HistoryProvider } from "./hooks/useHistory";
 
-export default function App(){
-  const [view, setView] = useState('new') // 'new' | 'history'
+export default function App() {
+  const [view, setView] = useState("new"); // 'new' | 'history'
 
   return (
     <HistoryProvider>
@@ -15,16 +15,16 @@ export default function App(){
 
         <main className="flex-1 flex justify-center items-start p-6">
           <div className="w-full max-w-3xl flex flex-col items-center">
-            <AnimatedIntro key={view} onIntroDone={() => { /* handled inside */ }} />
+            {view === "new" && <AnimatedIntro />}
 
-            <div className="w-full mt-6 relative">
-              {view === 'new' && (
+            <div className="w-full mt-18 relative">
+              {view === "new" && (
                 <div className="panel">
                   <CheckPanel />
                 </div>
               )}
 
-              {view === 'history' && (
+              {view === "history" && (
                 <div className="panel">
                   <HistoryPanel />
                 </div>
@@ -34,5 +34,5 @@ export default function App(){
         </main>
       </div>
     </HistoryProvider>
-  )
+  );
 }

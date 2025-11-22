@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
+:root {
   --muted: #555555;
+  --highlight: #ff8c00;
 }
 
 .panel {
@@ -20,5 +21,12 @@
   }
 }
 
-.fade-enter { opacity: 0; transform: translateY(8px); }
-.fade-enter-active { opacity: 1; transform: translateY(0); transition: all 300ms ease; }
+.fade-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 300ms ease;
+}
