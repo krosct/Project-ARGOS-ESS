@@ -17,7 +17,7 @@ export default function App() {
           <div className="w-full max-w-3xl flex flex-col items-center">
             {view === "new" && <AnimatedIntro />}
 
-            <div className="w-full mt-18 relative">
+            <div className="w-full mt-80 relative">
               {view === "new" && (
                 <div className="panel">
                   <CheckPanel />

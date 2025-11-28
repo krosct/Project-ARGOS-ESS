@@ -12,7 +12,7 @@
 }
 
 .animated-intro {
-  @apply text-5xl font-extrabold leading-tight text-black;
+  @apply text-6xl font-extrabold leading-tight text-black;
 }
 
 @media (max-width: 800px) {

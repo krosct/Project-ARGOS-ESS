@@ -3,7 +3,7 @@ import useTypewriter from "../hooks/useTypewriter";
 
 export default function AnimatedIntro() {
   const introText =
-    "Em mundo cada vez mais polarizado, nosso objetivo é detectar notícias falsas de forma imparcial, vamos analisar sua informação agora.";
+    "Em mundo cada vez mais polarizado, nosso objetivo é detectar notícias falsas de forma imparcial, vamos analisar sua dúvida agora.";
   const highlightText = "detectar notícias falsas de forma imparcial";
   const [done, setDone] = useState(false);
   const typed = useTypewriter(introText, {
