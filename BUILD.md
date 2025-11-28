@@ -19,8 +19,10 @@ docker-compose up --build
 
 2. Acesse os serviços:
 
-* **Frontend**: http://localhost:3000
+* **Frontend**: http://localhost:5173
 * **API Backend**: http://localhost:8000/docs
+
+> Observação: Durante o build dos containers, os testes automatizados do frontend e backend são executados. O build falhará se qualquer teste falhar.
 
 # 🐍 Opção 2: Instalação Manual (Desenvolvimento Local)
 Use esta opção se precisar debugar código ou se não quiser usar Docker.
