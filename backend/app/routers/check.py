@@ -7,6 +7,10 @@ router = APIRouter(prefix="/api/check", tags=["check"])
 @router.post("/", response_model=CheckResponse)
 def submit_check(request: CheckRequest):
     fake_id = str(uuid.uuid4())
+    
+    # db_check = models.CheckRecord(id=fake_id, text=request.text)
+    # db.add(db_check); db.commit()
+    
     return {"id": fake_id, "status": "ANALYSING"}
 
 @router.get("/{check_id}", response_model=CheckStatusResponse)
