@@ -24,8 +24,15 @@ class CheckStatusResponse(BaseModel):
     result: Optional[str] = None
 
 # === History Schemas ===
+
+class HistoryCreate(BaseModel):
+    text: str
+    result: str
+
+
 class HistoryItem(BaseModel):
     id: str
-    text_preview: str
-    date: str
-    status: str
+    text: str
+    result: str
+    created_at: str
+
