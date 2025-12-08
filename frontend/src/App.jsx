@@ -14,7 +14,7 @@ export default function App() {
         <Sidebar view={view} setView={setView} />
 
         <main className="flex-1 flex justify-center items-start p-6">
-          <div className="w-full max-w-3xl flex flex-col items-center">
+          <div className="w-full max-w-8xl flex flex-col items-center">
             {view === "new" && <AnimatedIntro />}
 
             <div className="w-full mt-80 relative">

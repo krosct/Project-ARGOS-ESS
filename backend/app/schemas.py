@@ -6,17 +6,21 @@ class LoginRequest(BaseModel):
     username: str
     password: str
 
+
 class LoginResponse(BaseModel):
     access_token: str
     token_type: str
+
 
 # === Check Schemas ===
 class CheckRequest(BaseModel):
     text: str
 
+
 class CheckResponse(BaseModel):
     id: str
     status: str
+
 
 class CheckStatusResponse(BaseModel):
     id: str
@@ -35,4 +39,3 @@ class HistoryItem(BaseModel):
     text: str
     result: str
     created_at: str
-

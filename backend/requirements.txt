@@ -4,6 +4,8 @@ sqlalchemy
 psycopg2-binary
 pydantic
 python-dotenv
+supabase
+httpx
 
 # Dev/test dependencies
 pytest
