@@ -3,8 +3,24 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers import check, auth, history
 from app.database import engine, Base
 from app import models
+import time
+import logging
+import os
 
-models.Base.metadata.create_all(bind=engine)
+if os.getenv("SUPABASE_HTTP", "0") != "1":
+    # Try to create tables with simple exponential backoff to handle transient network issues
+    _max_attempts = 5
+    for attempt in range(1, _max_attempts + 1):
+        try:
+            models.Base.metadata.create_all(bind=engine)
+            break
+        except Exception as e:
+            wait = min(2 ** attempt, 30)
+            logging.warning(f"DB init attempt {attempt}/{_max_attempts} failed: {e}. Retrying in {wait}s...")
+            if attempt == _max_attempts:
+                logging.error("DB initialization failed after retries; continuing to start API. Endpoints may fail until DB is reachable.")
+                break
+            time.sleep(wait)
 
 app = FastAPI(title="Projeto Argos")
 
