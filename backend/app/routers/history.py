@@ -9,14 +9,14 @@ def get_history():
     return [
         {
             "id": "1",
-            "text_preview": "Notícia sobre as eleições...",
-            "date": "2023-10-27",
-            "status": "VERIFIED"
+            "text": "Notícia sobre as eleições...",
+            "result": "VERIFIED",
+            "created_at": "2023-10-27"
         },
         {
             "id": "2",
-            "text_preview": "Tweet sobre as vacinas...",
-            "date": "2023-10-28",
-            "status": "FAKE"
+            "text": "Tweet sobre as vacinas...",
+            "result": "FAKE",
+            "created_at": "2023-10-28"
         }
     ]
