@@ -41,3 +41,17 @@ def get_history():
     except Exception:
         logging.exception("DB error on get_history")
         raise HTTPException(status_code=503, detail="Database unavailable")
+    return [
+        {
+            "id": "1",
+            "text": "Notícia sobre as eleições...",
+            "result": "VERIFIED",
+            "created_at": "2023-10-27"
+        },
+        {
+            "id": "2",
+            "text": "Tweet sobre as vacinas...",
+            "result": "FAKE",
+            "created_at": "2023-10-28"
+        }
+    ]

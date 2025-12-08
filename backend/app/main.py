@@ -29,9 +29,9 @@ if os.getenv("SUPABASE_HTTP", "0") != "1":
 app = FastAPI(title="Projeto Argos")
 
 origins = [
-    "http://localhost",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://localhost:3000",
 ]
 
 app.add_middleware(
@@ -42,6 +42,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Registrar rotas
 app.include_router(check.router)
 app.include_router(auth.router)
 app.include_router(history.router)

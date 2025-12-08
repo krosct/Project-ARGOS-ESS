@@ -1,60 +1,110 @@
-import React, { useEffect, useState } from 'react'
-import { useHistory } from '../hooks/useHistory'
-import FeedbackPanel from './FeedbackPanel'
+import { useState, useEffect, useRef } from "react";
+import { submitCheck, getCheckStatus } from "../api/api";
+import { useHistory } from "../hooks/useHistory";
 
-function simpleCheck(text){
-  if(!text.trim()) return 'Texto vazio — insira algo para checar.';
-  const lower = text.toLowerCase();
-  const suspiciousWords = ['clique aqui','compartilhe','segredo','garantia','viral','comprova','exclusivo'];
-  const contains = suspiciousWords.filter(w=>lower.includes(w));
-  if(contains.length>0) return `Possível conteúdo sensacionalista / enganoso (palavras: ${contains.join(', ')}).`;
-  if(lower.length < 30) return 'Texto curto — pode faltar contexto. Verifique fontes e autoria.';
-  return 'Nenhum sinal claro de manipulação pelo heurístico simples. Recomendamos checar fontes e data.';
-}
-
-export default function CheckPanel(){
-  const { add } = useHistory();
-  const [text, setText] = useState('');
+export default function CheckPanel() {
+  const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null);
   const [result, setResult] = useState(null);
 
-  const [count, setCount] = useState(0);
+  const intervalRef = useRef(null);
+  const { add } = useHistory();
 
-  useEffect(()=> setCount(text.length), [text]);
+  // Cleanup: cancelar polling ao desmontar
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, []);
 
-  function handleCheck(){
-    const res = simpleCheck(text);
-    setResult(res);
-    add(text, res);
-    setText('');
-  }
+  const handleSubmit = async () => {
+    try {
+      setLoading(true);
+      setResult(null);
+      setStatus("Enviando...");
+
+      const { id } = await submitCheck(text);
+      setStatus("Analisando...");
+
+      let attempts = 0;
+      const maxAttempts = 60;
+
+      intervalRef.current = setInterval(async () => {
+        attempts++;
+
+        try {
+          const response = await getCheckStatus(id);
+
+          if (response.status === "COMPLETED") {
+            clearInterval(intervalRef.current);
+            setStatus("Concluído");
+            setResult(response.result);
+            setLoading(false);
+
+            add(text, response.result);
+            return;
+          }
+
+          if (response.status === "FAILED") {
+            clearInterval(intervalRef.current);
+            setStatus("Falha ao processar");
+            setLoading(false);
+            return;
+          }
+        } catch (err) {
+          clearInterval(intervalRef.current);
+          setStatus("Erro de comunicação");
+          setLoading(false);
+          return;
+        }
+
+        if (attempts >= maxAttempts) {
+          clearInterval(intervalRef.current);
+          setStatus("Tempo máximo excedido");
+          setLoading(false);
+        }
+      }, 1000);
+    } catch (err) {
+      console.error(err);
+      setStatus("Erro ao enviar");
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="text-xl font-bold">Vamos começar a checagem</div>
+    <div className="p-4 bg-white rounded shadow">
+      <h2 className="text-xl font-bold mb-3">Verificar Fake News</h2>
 
       <textarea
+        className="border border-gray-300 p-3 w-full h-32 rounded"
         value={text}
-        onChange={(e)=>setText(e.target.value)}
-        maxLength={150}
-        placeholder="Cole o texto aqui (máx 150 caracteres)"
-        className="w-full p-3 rounded-xl border border-gray-300 bg-white resize-none h-28"
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Cole o texto para verificar..."
       />
 
-      <div className="flex items-center justify-between">
-        <div className="text-sm text-gray-600">{count} / 150</div>
-        <button onClick={handleCheck} disabled={!text.trim()} className="btn bg-accent hover:opacity-90 text-white px-4 py-2 rounded-xl disabled:opacity-60">
-          Checar
-        </button>
-      </div>
+      <button
+        onClick={handleSubmit}
+        disabled={loading || !text.trim()}
+        className={`mt-4 px-4 py-2 rounded text-white ${
+          loading ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
+        }`}
+      >
+        {loading ? "Processando..." : "Verificar"}
+      </button>
 
-      {result && (
-        <div className="bg-white p-3 rounded-lg border border-gray-200">
-          <strong>Resultado:</strong>
-          <div className="mt-2 text-sm text-gray-800">{result}</div>
-        </div>
+      {status && (
+        <p className="mt-3 text-gray-700">
+          <strong>Status:</strong> {status}
+        </p>
       )}
 
-      <FeedbackPanel />
+      {result && (
+        <div className="mt-4 p-4 bg-gray-100 border rounded">
+          <h3 className="font-bold">Resultado:</h3>
+          <p>{result}</p>
+        </div>
+      )}
     </div>
-  )
+  );
 }
