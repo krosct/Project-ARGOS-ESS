@@ -1,0 +1,25 @@
+{
+  "name": "project-argos-ess",
+  "version": "1.0.0",
+  "description": "![Badge de Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow) ![Badge de Licença](https://img.shields.io/github/license/krosct/Projeto-ESS) ![Badge de Ultimo Commit](https://img.shields.io/github/last-commit/krosct/Projeto-ESS) ![Badge de Contribuidores](https://img.shields.io/github/contributors/krosct/Projeto-ESS) ![Codecov](https://img.shields.io/codecov/c/github/krosct/Projeto-ESS) ![Linguagem](https://img.shields.io/github/languages/top/krosct/Projeto-ESS) ![Feito com PyTorch](https://img.shields.io/badge/Feito%20com-PyTorch-EE4C2C?logo=pytorch) ![Python](https://img.shields.io/badge/python-3.9+-blue.svg?logo=python&logoColor=yellow) ![Acurácia do Modelo](https://img.shields.io/badge/Acurácia-00%25-success) ![Dataset](https://img.shields.io/badge/Dataset-TO%20DEFINE-orange) <!-- ![Feito com TensorFlow](https://img.shields.io/badge/Feito%20com-TensorFlow-FF6F00?logo=tensorflow) --> ## 📖 Descrição Geral do Projeto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krosct/Project-ARGOS-ESS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krosct/Project-ARGOS-ESS/issues"
+  },
+  "homepage": "https://github.com/krosct/Project-ARGOS-ESS#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17"
+  }
+}

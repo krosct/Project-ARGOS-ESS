@@ -14,22 +14,20 @@ export default function App() {
         <Sidebar view={view} setView={setView} />
 
         <main className="flex-1 flex justify-center items-start p-6">
-          <div className="w-full max-w-3xl flex flex-col items-center">
+          <div className="w-full max-w-3xl flex flex-col items-center space-y-6">
             {view === "new" && <AnimatedIntro />}
 
-            <div className="w-full mt-80 relative">
-              {view === "new" && (
-                <div className="panel">
-                  <CheckPanel />
-                </div>
-              )}
+            {view === "new" && (
+              <div className="w-full">
+                <CheckPanel />
+              </div>
+            )}
 
-              {view === "history" && (
-                <div className="panel">
-                  <HistoryPanel />
-                </div>
-              )}
-            </div>
+            {view === "history" && (
+              <div className="w-full">
+                <HistoryPanel />
+              </div>
+            )}
           </div>
         </main>
       </div>
