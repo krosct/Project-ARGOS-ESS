@@ -1,50 +1,62 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { getHistory, getHistoryItem, deleteHistoryItem } from "../api/api.jsx";
 
-const STORAGE_KEY = "argos_history_v1";
 const HistoryContext = createContext(null);
 
 export function HistoryProvider({ children }) {
   const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Carrega do localStorage
+  // Carrega histórico do backend ao montar
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      setList(raw ? JSON.parse(raw) : []);
-    } catch (e) {
-      setList([]);
-    }
+    fetchHistory();
   }, []);
 
-  // Salva sempre que a lista muda
-  useEffect(() => {
+  async function fetchHistory() {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-    } catch (e) {}
-  }, [list]);
+      setLoading(true);
+      const data = await getHistory();
+      setList(data);
+    } catch (err) {
+      console.error("Erro ao carregar histórico:", err);
+      setList([]);
+    } finally {
+      setLoading(false);
+    }
+  }
 
-  // Adiciona item ao histórico
-  function add({ id, text, result, created_at }) {
-    const item = {
-      id: id ?? Date.now(),
-      text,
-      result,
-      created_at: created_at ?? new Date().toISOString(),
-    };
-
-    const next = [item, ...list];
-    if (next.length > 200) next.length = 200; // Limite opcional
-
+  // Adiciona novo item no histórico
+  // Mantemos assinatura original, mas agora pode ser chamado após criar check via backend
+  function add(text, result) {
+    const next = [
+      {
+        id: Date.now().toString(),
+        text,
+        result,
+        created_at: new Date().toISOString(),
+      },
+      ...list,
+    ];
+    if (next.length > 200) next.length = 200;
     setList(next);
   }
 
-  // Remove item
-  function remove(id) {
-    setList(list.filter((item) => item.id !== id));
+  // Remove item do backend e atualiza localmente
+  async function remove(id) {
+    try {
+      await deleteHistoryItem(id);
+      setList((prev) => prev.filter((i) => i.id !== id));
+    } catch (err) {
+      console.error("Erro ao deletar item do histórico:", err);
+      // fallback local
+      setList((prev) => prev.filter((i) => i.id !== id));
+    }
   }
 
   return (
-    <HistoryContext.Provider value={{ list, add, remove }}>
+    <HistoryContext.Provider
+      value={{ list, add, remove, loading, fetchHistory }}
+    >
       {children}
     </HistoryContext.Provider>
   );

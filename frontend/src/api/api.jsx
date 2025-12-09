@@ -1,20 +1,14 @@
-// src/api/api.jsx
-const API_URL = "http://localhost:8000"; 
-// Ajuste se estiver usando outro endereço
+const API_URL = "http://localhost:8000"; // ajuste se necessário
 
-// === Função genérica para requisições ===
+// === Função genérica de requisição ===
 async function request(endpoint, method = "GET", body = null, token = null) {
   const headers = { "Content-Type": "application/json" };
 
-  if (token) {
-    headers["Authorization"] = `Bearer ${token}`;
-  }
+  if (token) headers["Authorization"] = `Bearer ${token}`;
 
   const options = { method, headers };
 
-  if (body) {
-    options.body = JSON.stringify(body);
-  }
+  if (body) options.body = JSON.stringify(body);
 
   const res = await fetch(`${API_URL}${endpoint}`, options);
 
@@ -27,35 +21,46 @@ async function request(endpoint, method = "GET", body = null, token = null) {
 }
 
 // =======================
-// AUTH
+// AUTENTICAÇÃO
 // =======================
 export async function login(username, password) {
   return request("/auth/login", "POST", { username, password });
 }
 
 // =======================
-// CHECK - Nova checagem
+// CHECAGEM DE FAKE NEWS
 // =======================
-export async function sendCheck(text, token) {
+
+// Envia uma nova checagem
+export async function submitCheck(text, token = null) {
   return request("/check", "POST", { text }, token);
 }
 
+// Consulta o status de uma checagem existente
+export async function getCheckStatus(id, token = null) {
+  return request(`/check/${id}`, "GET", null, token);
+}
+
 // =======================
-// HISTORY
+// HISTÓRICO
 // =======================
-export async function getHistory(token) {
+
+// Lista todo o histórico
+export async function getHistory(token = null) {
   return request("/history", "GET", null, token);
 }
 
-export async function getHistoryItem(id, token) {
+// Pega um item específico do histórico
+export async function getHistoryItem(id, token = null) {
   return request(`/history/${id}`, "GET", null, token);
 }
 
-export async function deleteHistoryItem(id, token) {
+// Deleta um item específico
+export async function deleteHistoryItem(id, token = null) {
   return request(`/history/${id}`, "DELETE", null, token);
 }
 
-export async function clearHistory(token) {
+// Limpa todo o histórico
+export async function clearHistory(token = null) {
   return request("/history/clear", "DELETE", null, token);
 }
-
