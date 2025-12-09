@@ -7,29 +7,20 @@
   --highlight: #ff8c00;
 }
 
-* {
-  @apply box-border;
-}
-
-body {
-  @apply text-gray-900 antialiased bg-white;
-}
-
 .panel {
-  @apply bg-gray-50 p-5 rounded-2xl border border-gray-200 shadow-md max-w-full;
+  @apply bg-gray-50 p-5 rounded-2xl border border-gray-200 shadow-md;
 }
 
 .animated-intro {
-  @apply text-5xl font-extrabold leading-tight text-black;
+  @apply text-6xl font-extrabold leading-tight text-black;
 }
 
 @media (max-width: 800px) {
   .animated-intro {
-    @apply text-2xl;
+    @apply text-xl;
   }
 }
 
-/* Entrada */
 .fade-enter {
   opacity: 0;
   transform: translateY(8px);
@@ -37,16 +28,5 @@ body {
 .fade-enter-active {
   opacity: 1;
   transform: translateY(0);
-  transition: all 300ms ease;
-}
-
-/* Saída opcional */
-.fade-exit {
-  opacity: 1;
-  transform: translateY(0);
-}
-.fade-exit-active {
-  opacity: 0;
-  transform: translateY(8px);
   transition: all 300ms ease;
 }
