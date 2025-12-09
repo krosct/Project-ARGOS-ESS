@@ -29,3 +29,14 @@ class HistoryItem(BaseModel):
     text_preview: str
     date: str
     status: str
+
+# === Motor IA Schemas ===
+class MotorIARequest(BaseModel):
+    url: Optional[str] = None
+    text: Optional[str] = None
+
+class MotorIAResponse(BaseModel):
+    score: int  # 0 a 100
+    verdict: str  # "VERDADEIRO" ou "FALSO"
+    explanation: str
+    sources: List[str]  # Lista de URLs das fontes
