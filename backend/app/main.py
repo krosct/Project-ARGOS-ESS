@@ -15,10 +15,14 @@ if os.getenv("SUPABASE_HTTP", "0") != "1":
             models.Base.metadata.create_all(bind=engine)
             break
         except Exception as e:
-            wait = min(2 ** attempt, 30)
-            logging.warning(f"DB init attempt {attempt}/{_max_attempts} failed: {e}. Retrying in {wait}s...")
+            wait = min(2**attempt, 30)
+            logging.warning(
+                f"DB init attempt {attempt}/{_max_attempts} failed: {e}. Retrying in {wait}s..."
+            )
             if attempt == _max_attempts:
-                logging.error("DB initialization failed after retries; continuing to start API. Endpoints may fail until DB is reachable.")
+                logging.error(
+                    "DB initialization failed after retries; continuing to start API. Endpoints may fail until DB is reachable."
+                )
                 break
             time.sleep(wait)
 
@@ -41,6 +45,7 @@ app.add_middleware(
 app.include_router(check.router)
 app.include_router(auth.router)
 app.include_router(history.router)
+
 
 @app.get("/")
 def root():
