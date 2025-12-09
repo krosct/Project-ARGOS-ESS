@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
 
+
 # === Auth Schemas ===
 class LoginRequest(BaseModel):
     username: str
@@ -27,7 +28,9 @@ class CheckStatusResponse(BaseModel):
     status: str
     result: Optional[str] = None
 
+
 # === History Schemas ===
+
 
 class HistoryCreate(BaseModel):
     text: str
