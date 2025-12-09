@@ -1,12 +1,19 @@
-fastapi
-uvicorn
-sqlalchemy
-psycopg2-binary
-pydantic
-python-dotenv
-supabase
-httpx
+# === API & Servidor ===
+fastapi==0.124.0             # Framework principal (usado em app/main.py)
+uvicorn==0.38.0              # Servidor web para rodar o FastAPI (usado no Dockerfile)
 
-# Dev/test dependencies
-pytest
-flake8
+# === Banco de Dados ===
+sqlalchemy==2.0.44           # ORM para consultas no banco (usado em app/database.py)
+psycopg2-binary==2.9.11      # Driver para conexão com PostgreSQL (definido no docker-compose)
+
+# === Validação & Configuração ===
+pydantic==2.12.5             # Validação de dados e schemas (usado em app/schemas.py)
+python-dotenv==1.2.1         # Carregamento de variáveis do arquivo .env (usado em app/database.py)
+
+# === Integrações Externas ===
+supabase==2.25.0             # Cliente para conexão com o Supabase (usado em app/supa.py)
+httpx==0.28.1                # Cliente HTTP (dependência do Supabase e requisições assíncronas)
+
+# === Desenvolvimento & Testes ===
+pytest==9.0.2                # Para rodar os testes automatizados (backend/tests/)
+flake8==7.3.0                # Para verificação de qualidade de código (CI pipeline)
