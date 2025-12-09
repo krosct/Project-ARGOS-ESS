@@ -1,10 +1,5 @@
-fastapi
-uvicorn
-sqlalchemy
-psycopg2-binary
-pydantic
-python-dotenv
-
-# Dev/test dependencies
-pytest
-flake8
+app==0.0.1
+fastapi==0.124.0
+pydantic==2.12.5
+python-dotenv==1.2.1
+SQLAlchemy==2.0.44
