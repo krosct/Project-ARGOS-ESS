@@ -12,7 +12,8 @@ class LoginResponse(BaseModel):
 
 # === Check Schemas ===
 class CheckRequest(BaseModel):
-    text: str
+    text: Optional[str] = None
+    url: Optional[str] = None
 
 class CheckResponse(BaseModel):
     id: str
@@ -22,6 +23,17 @@ class CheckStatusResponse(BaseModel):
     id: str
     status: str
     result: Optional[str] = None
+
+class NewsAnalysisResult(BaseModel):
+    score: int  # 0-100
+    veredito: str
+    explicacao: str
+    fontes: List[str]
+
+class CheckAnalysisResponse(BaseModel):
+    id: str
+    status: str
+    result: Optional[NewsAnalysisResult] = None
 
 # === History Schemas ===
 class HistoryItem(BaseModel):

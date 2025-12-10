@@ -6,6 +6,9 @@ pydantic
 python-dotenv
 supabase
 httpx
+google-generativeai
+beautifulsoup4
+requests
 
 # Dev/test dependencies
 pytest
