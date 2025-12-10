@@ -21,7 +21,8 @@ if os.getenv("SUPABASE_HTTP", "0") != "1":
             )
             if attempt == _max_attempts:
                 logging.error(
-                    "DB initialization failed after retries; continuing to start API. Endpoints may fail until DB is reachable."
+                    "DB initialization failed after retries; continuing to start API. \
+                    Endpoints may fail until DB is reachable."
                 )
                 break
             time.sleep(wait)
@@ -42,7 +43,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Registrar rotas
+
 app.include_router(check.router)
 app.include_router(auth.router)
 app.include_router(history.router)
@@ -51,3 +52,4 @@ app.include_router(history.router)
 @app.get("/")
 def root():
     return {"message": "API is running"}
+

@@ -38,7 +38,6 @@ class HistoryCreate(BaseModel):
 
 class HistoryItem(BaseModel):
     id: str
-    text: str
-    result: str
-    created_at: str
-
+    text_preview: str
+    date: str
+    status: str
