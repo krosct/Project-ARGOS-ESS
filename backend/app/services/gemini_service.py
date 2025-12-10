@@ -17,9 +17,6 @@ if GEMINI_API_KEY:
 
 
 def extract_text_from_url(url: str) -> str:
-    """
-    Extrai o texto principal de uma URL de notícia.
-    """
     try:
         # Validar formato básico de URL
         if not url.startswith(('http://', 'https://')):
@@ -51,20 +48,17 @@ def extract_text_from_url(url: str) -> str:
         if article:
             text = article.get_text(separator=' ', strip=True)
         else:
-            # Fallback: pegar todo o texto do body
             body = soup.find('body')
             if body:
                 text = body.get_text(separator=' ', strip=True)
             else:
                 text = soup.get_text(separator=' ', strip=True)
-        
-        # Limpar espaços múltiplos
         text = re.sub(r'\s+', ' ', text).strip()
         
         if not text or len(text) < 50:
             raise ValueError("Não foi possível extrair conteúdo suficiente da URL")
         
-        # Limita o tamanho do texto para evitar tokens excessivos
+        # Limita o tamanho do texto
         return text[:5000] if len(text) > 5000 else text
     except requests.exceptions.RequestException as e:
         logging.error(f"Erro de requisição ao acessar URL {url}: {e}")
