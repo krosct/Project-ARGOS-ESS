@@ -48,6 +48,7 @@ app.include_router(check.router)
 app.include_router(auth.router)
 app.include_router(history.router)
 
+
 # --- Endpoint raiz (mantido da sua versão local) ---
 @app.get("/")
 def root():
