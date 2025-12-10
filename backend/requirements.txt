@@ -1,3 +1,9 @@
+app==0.0.1
+fastapi==0.124.0
+pydantic==2.12.5
+python-dotenv==1.2.1
+SQLAlchemy==2.0.44
+
 # === API & Servidor ===
 fastapi==0.124.0             # Framework principal (usado em app/main.py)
 uvicorn==0.38.0              # Servidor web para rodar o FastAPI (usado no Dockerfile)
