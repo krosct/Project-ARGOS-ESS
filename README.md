@@ -4,7 +4,6 @@
 ![Badge de Licença](https://img.shields.io/github/license/krosct/Projeto-ESS)
 ![Badge de Ultimo Commit](https://img.shields.io/github/last-commit/krosct/Projeto-ESS)
 ![Badge de Contribuidores](https://img.shields.io/github/contributors/krosct/Projeto-ESS)
-![Codecov](https://img.shields.io/codecov/c/github/krosct/Projeto-ESS)
 ![Codecov](https://codecov.io/gh/krosct/Project-ARGOS-ESS/graph/badge.svg)
 ![Linguagem](https://img.shields.io/github/languages/top/krosct/Projeto-ESS)
 ![Feito com PyTorch](https://img.shields.io/badge/Feito%20com-PyTorch-EE4C2C?logo=pytorch)
