@@ -7,8 +7,8 @@ import time
 import logging
 import os
 
+# --- Inicialização do Banco com Retry (mantido da sua versão local) ---
 if os.getenv("SUPABASE_HTTP", "0") != "1":
-    # Try to create tables with simple exponential backoff to handle transient network issues
     _max_attempts = 5
     for attempt in range(1, _max_attempts + 1):
         try:
@@ -21,7 +21,8 @@ if os.getenv("SUPABASE_HTTP", "0") != "1":
             )
             if attempt == _max_attempts:
                 logging.error(
-                    "DB initialization failed after retries; continuing to start API. Endpoints may fail until DB is reachable."
+                    "DB initialization failed after retries; continuing to start API. \
+                    Endpoints may fail until DB is reachable."
                 )
                 break
             time.sleep(wait)
@@ -29,9 +30,9 @@ if os.getenv("SUPABASE_HTTP", "0") != "1":
 app = FastAPI(title="Projeto Argos")
 
 origins = [
-    "http://localhost",
     "http://localhost:5173",
     "http://127.0.0.1:5173",
+    "http://localhost:3000",
 ]
 
 app.add_middleware(
@@ -42,11 +43,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 app.include_router(check.router)
 app.include_router(auth.router)
 app.include_router(history.router)
 
 
+# --- Endpoint raiz (mantido da sua versão local) ---
 @app.get("/")
 def root():
     return {"message": "API is running"}

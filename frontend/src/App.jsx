@@ -3,6 +3,7 @@ import Sidebar from "./components/Sidebar";
 import AnimatedIntro from "./components/AnimatedIntro";
 import CheckPanel from "./components/CheckPanel";
 import HistoryPanel from "./components/HistoryPanel";
+import Footer from "./components/Footer";
 import { HistoryProvider } from "./hooks/useHistory";
 
 export default function App() {
@@ -10,28 +11,31 @@ export default function App() {
 
   return (
     <HistoryProvider>
-      <div className="min-h-screen flex bg-white text-black">
-        <Sidebar view={view} setView={setView} />
+      <div className="flex flex-col min-h-screen">
+        <div className="flex flex-1 bg-white text-black">
+          <Sidebar view={view} setView={setView} />
 
-        <main className="flex-1 flex justify-center items-start p-6">
-          <div className="w-full max-w-3xl flex flex-col items-center">
-            {view === "new" && <AnimatedIntro />}
+          <main className="flex-1 flex justify-center items-start p-6">
+            <div className="w-full max-w-3xl flex flex-col items-center space-y-6">
+              {view === "new" && <AnimatedIntro />}
 
-            <div className="w-full mt-80 relative">
               {view === "new" && (
-                <div className="panel">
+                <div className="w-full">
                   <CheckPanel />
                 </div>
               )}
 
               {view === "history" && (
-                <div className="panel">
+                <div className="w-full">
                   <HistoryPanel />
                 </div>
               )}
             </div>
-          </div>
-        </main>
+          </main>
+        </div>
+
+        {/* Rodapé */}
+        <Footer />
       </div>
     </HistoryProvider>
   );

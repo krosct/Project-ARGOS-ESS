@@ -30,6 +30,12 @@ class CheckStatusResponse(BaseModel):
 
 
 # === History Schemas ===
+
+class HistoryCreate(BaseModel):
+    text: str
+    result: str
+
+
 class HistoryItem(BaseModel):
     id: str
     text_preview: str
