@@ -17,3 +17,4 @@ httpx==0.28.1                # Cliente HTTP (dependência do Supabase e requisi�
 # === Desenvolvimento & Testes ===
 pytest==9.0.2                # Para rodar os testes automatizados (backend/tests/)
 flake8==7.3.0                # Para verificação de qualidade de código (CI pipeline)
+pytest-cov==7.0.0
