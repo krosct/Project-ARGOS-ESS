@@ -1,0 +1,138 @@
+name: 🐛 Bug Report
+description: Reporte um bug ou comportamento inesperado
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 👋 Obrigado por reportar um bug!
+        
+        Por favor, preencha as informações abaixo para nos ajudar a entender e corrigir o problema.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Pré-requisitos
+      description: Antes de reportar, verifique se você fez o seguinte
+      options:
+        - label: Pesquisei issues existentes e não encontrei duplicatas
+          required: true
+        - label: Li a documentação e não encontrei solução
+          required: true
+        - label: Estou usando a versão mais recente do projeto
+          required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 📝 Descrição do Bug
+      description: Uma descrição clara e concisa do problema
+      placeholder: |
+        Exemplo: Ao submeter um texto com mais de 10.000 caracteres, a API retorna erro 500
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔄 Passos para Reproduzir
+      description: Passos detalhados para reproduzir o comportamento
+      placeholder: |
+        1. Vá para '...'
+        2. Clique em '...'
+        3. Insira '...'
+        4. Veja o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ Comportamento Esperado
+      description: Descreva o que você esperava que acontecesse
+      placeholder: A API deveria processar o texto e retornar o resultado
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: ❌ Comportamento Atual
+      description: Descreva o que realmente aconteceu
+      placeholder: A API retorna erro 500 com mensagem "Internal Server Error"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: 🧩 Componente Afetado
+      description: Qual parte do sistema está apresentando o problema?
+      options:
+        - Backend (API)
+        - Frontend (React)
+        - Database (Supabase)
+        - Docker/Deploy
+        - Documentação
+        - Testes
+        - Outro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 🚨 Severidade
+      description: Qual o impacto deste bug?
+      options:
+        - 🔴 Crítico - Sistema inutilizável
+        - 🟠 Alto - Funcionalidade principal quebrada
+        - 🟡 Médio - Funcionalidade secundária afetada
+        - 🟢 Baixo - Problema cosmético ou menor
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 📸 Screenshots/Logs
+      description: |
+        Se aplicável, adicione screenshots ou logs de erro
+        Dica: Você pode colar imagens diretamente aqui
+      placeholder: |
+        Cole logs de erro ou arraste imagens aqui
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 🖥️ Ambiente
+      description: Informações sobre o ambiente onde o bug ocorre
+      value: |
+        - OS: [ex: Windows 11, Ubuntu 22.04, macOS 13]
+        - Browser: [ex: Chrome 120, Firefox 121]
+        - Python: [ex: 3.13]
+        - Node: [ex: 20.10]
+        - Docker: [ex: 24.0.7]
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: ℹ️ Contexto Adicional
+      description: Qualquer outra informação relevante sobre o problema
+      placeholder: |
+        - Tentativas de solução já feitas
+        - Workarounds encontrados
+        - Logs adicionais
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: 🤝 Contribuição
+      options:
+        - label: Eu gostaria de trabalhar na correção deste bug
+          required: false

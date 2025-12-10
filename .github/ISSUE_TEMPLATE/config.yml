@@ -1,0 +1,21 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Discussões da Comunidade
+    url: https://github.com/krosct/Project-ARGOS-ESS/discussions
+    about: Faça perguntas, compartilhe ideias ou discuta o projeto com a comunidade
+  
+  - name: 📚 Documentação
+    url: https://github.com/krosct/Project-ARGOS-ESS#readme
+    about: Consulte a documentação completa do projeto
+  
+  - name: 🏗️ Arquitetura
+    url: https://github.com/krosct/Project-ARGOS-ESS/blob/main/ARCHITECTURE.md
+    about: Veja a documentação técnica e modelo C4 do sistema
+  
+  - name: 🤝 Como Contribuir
+    url: https://github.com/krosct/Project-ARGOS-ESS/blob/main/CONTRIBUTING.md
+    about: Guia completo para contribuir com o projeto
+  
+  - name: 📧 Contato Direto
+    url: mailto:argos-team@example.com
+    about: Entre em contato com a equipe para assuntos sensíveis ou privados

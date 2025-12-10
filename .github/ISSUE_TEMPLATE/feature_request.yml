@@ -1,0 +1,168 @@
+name: ✨ Feature Request
+description: Sugira uma nova funcionalidade para o projeto
+title: "[FEATURE] "
+labels: ["enhancement", "needs-discussion"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 💡 Obrigado por sugerir uma nova feature!
+        
+        Sua ideia pode ajudar a melhorar o Projeto Argos para todos.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Pré-requisitos
+      options:
+        - label: Pesquisei issues existentes e não encontrei essa sugestão
+          required: true
+        - label: Esta feature se alinha com os objetivos do projeto
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 🎯 Problema que Resolve
+      description: Descreva o problema que esta feature resolveria
+      placeholder: |
+        Exemplo: Atualmente, não é possível exportar o histórico de verificações em formato PDF, 
+        o que dificulta o compartilhamento de relatórios com outras pessoas.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: 💡 Solução Proposta
+      description: Descreva a solução que você gostaria de ver implementada
+      placeholder: |
+        Exemplo: Adicionar um botão "Exportar para PDF" na página de histórico que gera um 
+        relatório formatado com todas as verificações do usuário.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 🔄 Alternativas Consideradas
+      description: Descreva soluções alternativas que você considerou
+      placeholder: |
+        Exemplo:
+        - Exportar como CSV (mais simples, mas menos visual)
+        - Integração com Google Docs (requer autenticação extra)
+        - Print manual da página (não é uma solução elegante)
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: 🧩 Componente Afetado
+      description: Onde esta feature seria implementada?
+      options:
+        - Backend (API)
+        - Frontend (UI)
+        - Database
+        - Ambos (Full-stack)
+        - DevOps/Infraestrutura
+        - Documentação
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 📊 Prioridade Sugerida
+      description: Quão importante é esta feature?
+      options:
+        - 🔴 Crítica - Bloqueador para uso
+        - 🟠 Alta - Muito importante
+        - 🟡 Média - Seria útil ter
+        - 🟢 Baixa - Nice to have
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: 👤 User Story
+      description: Descreva como um usuário interagiria com esta feature
+      placeholder: |
+        Como [tipo de usuário],
+        Eu quero [ação/funcionalidade],
+        Para que [benefício/valor].
+        
+        Exemplo:
+        Como jornalista verificador de fatos,
+        Eu quero exportar meu histórico em PDF,
+        Para que eu possa incluir as verificações em meus artigos.
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: ✅ Critérios de Aceitação
+      description: Como saberemos que esta feature está completa?
+      placeholder: |
+        - [ ] Botão "Exportar PDF" visível na página de histórico
+        - [ ] PDF gerado contém todas as verificações do período selecionado
+        - [ ] PDF tem logo do Argos e data de geração
+        - [ ] Loading spinner durante geração do PDF
+        - [ ] Mensagem de sucesso após download
+    validations:
+      required: false
+
+  - type: textarea
+    id: mockup
+    attributes:
+      label: 🎨 Mockup/Design (opcional)
+      description: Se tiver um design visual, compartilhe aqui
+      placeholder: |
+        Cole imagens ou links para mockups/wireframes
+
+  - type: textarea
+    id: technical
+    attributes:
+      label: 🛠️ Sugestões Técnicas (opcional)
+      description: Se você tem ideias sobre implementação técnica
+      placeholder: |
+        Exemplo:
+        - Usar biblioteca `jsPDF` no frontend
+        - Endpoint GET /api/history/export?format=pdf
+        - Template usando HTML + CSS convertido para PDF
+
+  - type: dropdown
+    id: breaking
+    attributes:
+      label: ⚠️ Breaking Change?
+      description: Esta feature quebraria compatibilidade com versões anteriores?
+      options:
+        - Não
+        - Sim
+        - Não tenho certeza
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: ℹ️ Contexto Adicional
+      description: Qualquer outra informação relevante
+      placeholder: |
+        - Links para implementações similares em outros projetos
+        - Referências de bibliotecas úteis
+        - Discussões prévias sobre o tema
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: 🤝 Contribuição
+      options:
+        - label: Eu gostaria de implementar esta feature
+          required: false
+        - label: Estou disposto a ajudar na revisão de código
+          required: false
+        - label: Posso ajudar com documentação
+          required: false
