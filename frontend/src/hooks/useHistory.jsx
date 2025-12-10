@@ -26,19 +26,10 @@ export function HistoryProvider({ children }) {
   }
 
   // Adiciona novo item no histórico
-  // Mantemos assinatura original, mas agora pode ser chamado após criar check via backend
-  function add(text, result) {
-    const next = [
-      {
-        id: Date.now().toString(),
-        text,
-        result,
-        created_at: new Date().toISOString(),
-      },
-      ...list,
-    ];
-    if (next.length > 200) next.length = 200;
-    setList(next);
+  // Como o backend já salva automaticamente, apenas recarrega do servidor
+  async function add(text, result) {
+    // O backend já salvou o item, então apenas recarregamos
+    await fetchHistory();
   }
 
   // Remove item do backend e atualiza localmente
