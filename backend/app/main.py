@@ -1,15 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import check, auth, history
-<<<<<<< HEAD
 from app.database import engine, Base
 from app import models
 import time
 import logging
 import os
 
+# --- Inicialização do Banco com Retry (mantido da sua versão local) ---
 if os.getenv("SUPABASE_HTTP", "0") != "1":
-    # Try to create tables with simple exponential backoff to handle transient network issues
     _max_attempts = 5
     for attempt in range(1, _max_attempts + 1):
         try:
@@ -26,8 +25,6 @@ if os.getenv("SUPABASE_HTTP", "0") != "1":
                 )
                 break
             time.sleep(wait)
-=======
->>>>>>> bbd8b047555a339eb22e8b6eeba18991bab414d2
 
 app = FastAPI(title="Projeto Argos")
 
@@ -49,11 +46,8 @@ app.add_middleware(
 app.include_router(check.router)
 app.include_router(auth.router)
 app.include_router(history.router)
-<<<<<<< HEAD
 
-
+# --- Endpoint raiz (mantido da sua versão local) ---
 @app.get("/")
 def root():
     return {"message": "API is running"}
-=======
->>>>>>> bbd8b047555a339eb22e8b6eeba18991bab414d2
