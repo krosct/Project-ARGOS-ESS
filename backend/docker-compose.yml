@@ -19,11 +19,9 @@ services:
       dockerfile: Dockerfile
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     volumes:
-      - .:/app:z
+      - ./backend:/app
     ports:
       - "8000:8000"
-    env_file:
-      - .env
     environment:
       DATABASE_URL: postgresql://argos_user:argos_password@db:5432/argos_db
     depends_on:
