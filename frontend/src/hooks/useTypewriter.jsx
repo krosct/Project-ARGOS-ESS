@@ -11,27 +11,32 @@ export default function useTypewriter(
   useEffect(() => {
     iRef.current = 0;
     setOut("");
+
     function tick() {
       if (iRef.current < text.length) {
         const current = text.slice(0, iRef.current + 1);
+
         if (highlight && current.includes(highlight)) {
           const safe = current.replace(
             highlight,
-            `<span style=\"color: var(--highlight);\">${highlight}</span>`
+            `<span style="color: var(--highlight);">${highlight}</span>`
           );
           setOut(safe);
         } else {
           setOut(current);
         }
+
         iRef.current++;
         tRef.current = setTimeout(tick, speed);
       } else {
         if (typeof onDone === "function") onDone();
       }
     }
+
     tick();
+
     return () => clearTimeout(tRef.current);
-  }, [text, speed, highlight]);
+  }, [text, speed, highlight, onDone]); // ✅ adicionado onDone
 
   return out;
 }
