@@ -6,13 +6,13 @@ import logging
 
 router = APIRouter(prefix="/api/history", tags=["history"])
 
+
 @router.get("/", response_model=List[HistoryItem])
 def get_history():
     try:
         # order by created_at desc, limit 100
         resp = (
-            supabase
-            .table("checks")
+            supabase.table("checks")
             .select("id,text,status,created_at")
             .order("created_at", desc=True)
             .limit(100)
@@ -22,8 +22,10 @@ def get_history():
             logging.error(f"Supabase select history error: {resp.error}")
             raise HTTPException(status_code=503, detail="Database unavailable")
         rows = resp.data or []
+
         def preview(text: str, n: int = 60) -> str:
             return text if not text or len(text) <= n else text[:n] + "..."
+
         items = [
             {
                 "id": r.get("id"),
@@ -39,3 +41,17 @@ def get_history():
     except Exception:
         logging.exception("DB error on get_history")
         raise HTTPException(status_code=503, detail="Database unavailable")
+    return [
+        {
+            "id": "1",
+            "text": "Notícia sobre as eleições...",
+            "result": "VERIFIED",
+            "created_at": "2023-10-27"
+        },
+        {
+            "id": "2",
+            "text": "Tweet sobre as vacinas...",
+            "result": "FAKE",
+            "created_at": "2023-10-28"
+        }
+    ]
