@@ -9,7 +9,7 @@ export default function AnimatedIntro() {
   const [done, setDone] = useState(false);
 
   // Variável para controlar a velocidade (ms por letra)
-  const typingSpeed = 80; // altere aqui para mais rápido ou mais lento
+  const typingSpeed = 65; // altere aqui para mais rápido ou mais lento
 
   useEffect(() => {
     setTyped("");
