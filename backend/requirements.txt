@@ -3,6 +3,7 @@ fastapi==0.124.0
 pydantic==2.12.5
 python-dotenv==1.2.1
 SQLAlchemy==2.0.44
+<<<<<<< HEAD
 # === API & Servidor ===
 fastapi==0.124.0             # Framework principal (usado em app/main.py)
 uvicorn==0.38.0              # Servidor web para rodar o FastAPI (usado no Dockerfile)
@@ -22,3 +23,5 @@ httpx==0.28.1                # Cliente HTTP (dependência do Supabase e requisi�
 # === Desenvolvimento & Testes ===
 pytest==9.0.2                # Para rodar os testes automatizados (backend/tests/)
 flake8==7.3.0                # Para verificação de qualidade de código (CI pipeline)
+=======
+>>>>>>> bbd8b047555a339eb22e8b6eeba18991bab414d2
