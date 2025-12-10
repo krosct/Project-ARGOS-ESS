@@ -119,20 +119,27 @@ class TestCheckSubmission:
         assert "id" in data
 
     def test_submit_check_with_empty_text(self, mock_supabase):
-        """Testa submissão com texto vazio"""
+        """Testa submissão com texto vazio (agora validado pelo schema)"""
         mock_response = MagicMock()
         mock_response.data = [{"id": "test-id"}]
         mock_response.error = None
-        mock_supabase.table().insert().execute.return_value = (
-            mock_response
-        )
+        mock_supabase.table().insert().execute.return_value = mock_response
 
         response = client.post(
             "/api/check/",
             json={"text": ""}
         )
 
-        assert response.status_code == 200
+        # validação do schema impede submissão vazia
+        assert response.status_code == 422
+        # opcional: verificar detalhe da validação
+        detail = response.json().get("detail", [])
+        assert isinstance(detail, list)
+        assert any(
+            d.get("type", "").startswith("string_too_")
+            or "at least" in str(d.get("msg", "")).lower()
+            for d in detail
+        )
 
     def test_submit_check_with_special_characters(self, mock_supabase):
         """Testa submissão com caracteres especiais"""
@@ -156,13 +163,12 @@ class TestCheckSubmission:
         mock_response = MagicMock()
         mock_response.data = None
         mock_response.error = {"message": "Connection failed"}
-        mock_supabase.table().insert().execute.return_value = (
-            mock_response
-        )
+        mock_supabase.table().insert().execute.return_value = mock_response
 
+        valid_text = "Texto de teste válido"  # >=10 chars
         response = client.post(
             "/api/check/",
-            json={"text": "Teste"}
+            json={"text": valid_text}
         )
 
         assert response.status_code == 503
@@ -188,15 +194,14 @@ class TestCheckSubmission:
         mock_response = MagicMock()
         mock_response.data = [{"id": "test-id"}]
         mock_response.error = None
-        mock_supabase.table().insert().execute.return_value = (
-            mock_response
-        )
+        mock_supabase.table().insert().execute.return_value = mock_response
 
         response = client.post(
             "/api/check/",
-            json={"text": "Teste"}
+            json={"text": "Notícia de teste válida"}
         )
 
+        assert response.status_code == 200
         data = response.json()
 
         assert len(data) == 2
@@ -208,17 +213,15 @@ class TestCheckSubmission:
         mock_response = MagicMock()
         mock_response.data = [{"id": "test-id"}]
         mock_response.error = None
-        mock_supabase.table().insert().execute.return_value = (
-            mock_response
-        )
+        mock_supabase.table().insert().execute.return_value = mock_response
 
         response1 = client.post(
             "/api/check/",
-            json={"text": "Texto 1"}
+            json={"text": "Texto de teste válido 1"}
         )
         response2 = client.post(
             "/api/check/",
-            json={"text": "Texto 2"}
+            json={"text": "Texto de teste válido 2"}
         )
 
         id1 = response1.json()["id"]

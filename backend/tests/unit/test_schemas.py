@@ -59,21 +59,19 @@ class TestCheckSchemas:
 
     def test_check_request_empty_text(self):
         """
-        Testa que CheckRequest aceita texto vazio.
-        Validação de negócio deve ser feita na rota.
+        Testa que CheckRequest NÃO aceita texto vazio.
+        Agora o schema aplica validação de negócio (min_length).
         """
         data = {"text": ""}
-        request = CheckRequest(**data)
-
-        assert request.text == ""
+        with pytest.raises(ValidationError):
+            CheckRequest(**data)
 
     def test_check_request_long_text(self):
-        """Testa CheckRequest com texto longo"""
+        """Testa CheckRequest rejeita texto acima do limite"""
         long_text = "A" * 10000
         data = {"text": long_text}
-        request = CheckRequest(**data)
-
-        assert len(request.text) == 10000
+        with pytest.raises(ValidationError):
+            CheckRequest(**data)
 
     def test_check_response_valid(self):
         """Testa criação válida de CheckResponse"""
