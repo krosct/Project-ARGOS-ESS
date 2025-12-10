@@ -31,7 +31,8 @@ if os.getenv("SUPABASE_HTTP", "0") != "1":
 app = FastAPI(title="Projeto Argos")
 
 
-allowed_origins_str = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000")
+allowed_origins_str = \
+os.getenv("ALLOWED_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000")
 origins = allowed_origins_str.split(",")
 
 
