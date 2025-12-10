@@ -23,6 +23,7 @@ wheels/
 *.egg
 .pytest_cache/
 .coverage
+__init__.py
 
 # --- Node.js / Frontend ---
 node_modules/
