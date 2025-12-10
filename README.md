@@ -5,12 +5,10 @@
 ![Badge de Ultimo Commit](https://img.shields.io/github/last-commit/krosct/Projeto-ESS)
 ![Badge de Contribuidores](https://img.shields.io/github/contributors/krosct/Projeto-ESS)
 ![Codecov](https://img.shields.io/codecov/c/github/krosct/Projeto-ESS)
+![Codecov](https://codecov.io/gh/krosct/Project-ARGOS-ESS/graph/badge.svg)
 ![Linguagem](https://img.shields.io/github/languages/top/krosct/Projeto-ESS)
 ![Feito com PyTorch](https://img.shields.io/badge/Feito%20com-PyTorch-EE4C2C?logo=pytorch)
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg?logo=python&logoColor=yellow)
-![Acurácia do Modelo](https://img.shields.io/badge/Acurácia-00%25-success)
-![Dataset](https://img.shields.io/badge/Dataset-TO%20DEFINE-orange)
-<!-- ![Feito com TensorFlow](https://img.shields.io/badge/Feito%20com-TensorFlow-FF6F00?logo=tensorflow) -->
 ## 📖 Descrição Geral do Projeto
 
 **Project Argos** é um sistema de informação desenvolvido como parte da disciplina de Engenharia de Software. O projeto tem como missão combater a desinformação através de uma plataforma inteligente capaz de analisar notícias e classificar seu potencial de veracidade. Utilizando técnicas de Inteligência Artificial e Processamento de Linguagem Natural, a ferramenta fornecerá aos usuários uma forma rápida e confiável de verificar conteúdos antes de compartilhá-los.
@@ -61,9 +59,9 @@ A equipe é composta por membros dedicados, cada um com um papel fundamental no 
 
 | Membro               | Papel                                    | GitHub                                                 |
 | -------------------- | ---------------------------------------- | ------------------------------------------------------ |
-| **André Vinicius**   | 🤵 Product Owner (P.O.) & Master DevOps | [Link para o perfil](https://github.com/decocampos)     |
+| **Gabriel Monteiro** | 🤵 Product Owner (P.O.) & Security      | [Link para o perfil](https://github.com/decocampos)     |
 | **Charlys Augusto**  | ⚙️ API & DB & Backend Developer         | [Link para o perfil](https://github.com/charlysfarias)  |
-| **Gabriel Monteiro** | 🛡️ Architecture & Security Engineer     | [Link para o perfil](https://github.com/krosct)         |
+| **André Vinicius**   | 🛡️ Product Manager & DevOps             | [Link para o perfil](https://github.com/krosct)         |
 | **João Victor**      | 🧪 Test & Framework Engineer            | [Link para o perfil](https://github.com/jvictornobre27) |
 | **Luiz Carlos**      | 🎨 UI/UX & Frontend Developer           | [Link para o perfil](https://github.com/lcs8)           |
 
@@ -125,16 +123,12 @@ Estamos abertos a contribuições! Se você deseja ajudar a melhorar o projeto, 
 
 Quer começar a contribuir? Temos algumas tarefas iniciais que são perfeitas para um primeiro contato com o projeto. Confira nossa página de Issues!
 
-- **[#1 - ISSUE 1](https://github.com/user/repo/issues/1)** `tag1` `tag2`
-- **[#2 - ISSUE 2](https://github.com/user/repo/issues/2)** `tag1` `tag2` `tag3`
-- **[#3 - ISSUE 3](https://github.com/user/repo/issues/3)** `tag1` `tag2`
-
-➡️ **[Ver todas as Issues](https://github.com/user/repo/issues)**
+➡️ **[ISSUES](https://github.com/krosct/Project-ARGOS-ESS/issues/)**
 
 ---
 
 ## 🔗 Links Importantes
 
 - **Quadro de Tarefas (Jira/Trello):** *[Link para o quadro do projeto](https://andre-vinicius-campos-lucena.atlassian.net/jira/software/projects/ARGOS/boards/2)*
-- **Protótipo de Design (Figma):** *[Link para o design no Figma]*
+- **Protótipo de Design (Miro):** *[[Link para o design no Miro](https://miro.com/welcomeonboard/R1JKYy9NOER5Rjd1MUlUcGFneWdqN0l5UFMzWk5kRGQ0SmUyNStiQ0pIek5FbTFVN1gwUkwwQlNVcnBUVFllNGFyMGYxeFRuRDdYNnBwaVhLY1QvVnRTSjRVb3JlQmRERThVbEJGTk1zd2hRNjJnMFZjNGdVWUhkcXJLekIrbFRNakdSWkpBejJWRjJhRnhhb1UwcS9BPT0hdjE=?share_link_id=453124489939)]*
 - **Documentação da API (Swagger/Postman):** *[Link para a documentação da API]*
