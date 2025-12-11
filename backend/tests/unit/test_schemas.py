@@ -123,6 +123,7 @@ class TestHistorySchemas:
         """Testa criação válida de HistoryItem"""
         data = {
             "id": "1",
+            "text": "Conteúdo completo...",
             "text_preview": "Notícia sobre vacinas...",
             "date": "2023-10-27",
             "status": "VERIFIED"
@@ -146,6 +147,7 @@ class TestHistorySchemas:
         for i, status in enumerate(statuses):
             data = {
                 "id": str(i),
+                "text": f"Texto completo {i}",
                 "text_preview": f"Preview {i}",
                 "date": "2023-10-27",
                 "status": status
@@ -158,6 +160,7 @@ class TestHistorySchemas:
         long_preview = "A" * 500
         data = {
             "id": "1",
+            "text": f"Texto completo ...",
             "text_preview": long_preview,
             "date": "2023-10-27",
             "status": "VERIFIED"
