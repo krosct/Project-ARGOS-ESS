@@ -130,4 +130,4 @@ Quer começar a contribuir? Temos algumas tarefas iniciais que são perfeitas pa
 
 - **Quadro de Tarefas (Jira/Trello):** *[Link para o quadro do projeto](https://andre-vinicius-campos-lucena.atlassian.net/jira/software/projects/ARGOS/boards/2)*
 - **Protótipo de Design (Miro):** *[[Link para o design no Miro](https://miro.com/welcomeonboard/R1JKYy9NOER5Rjd1MUlUcGFneWdqN0l5UFMzWk5kRGQ0SmUyNStiQ0pIek5FbTFVN1gwUkwwQlNVcnBUVFllNGFyMGYxeFRuRDdYNnBwaVhLY1QvVnRTSjRVb3JlQmRERThVbEJGTk1zd2hRNjJnMFZjNGdVWUhkcXJLekIrbFRNakdSWkpBejJWRjJhRnhhb1UwcS9BPT0hdjE=?share_link_id=453124489939)]*
-- **Documentação da API (Swagger/Postman):** *[Link para a documentação da API]*
+- **Vídeo de Apresentação do Projeto:** *[Link para o vídeo](https://youtu.be/6UqLxnSNHLE)*
