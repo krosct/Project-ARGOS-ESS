@@ -11,7 +11,7 @@ router = APIRouter(prefix="/api/check", tags=["check"])
 async def process_check_background(check_id: str, text_or_url: str):
     try:
         # Processa com Gemini
-        result = await process_check(text_or_url)       
+        result = await process_check(text_or_url)
         # Atualiza o registro no banco de dados
         update_data = {
             "status": "COMPLETED",
@@ -49,11 +49,7 @@ async def submit_check(request: CheckRequest, background_tasks: BackgroundTasks)
         if resp.data is None and resp.error:
             logging.error(f"Supabase insert error: {resp.error}")
             raise HTTPException(status_code=503, detail="Database unavailable")
-        
-        # Inicia processamento em background
-        # BackgroundTasks do FastAPI suporta corrotinas async diretamente
         background_tasks.add_task(process_check_background, rec_id, request.text)
-        
     except HTTPException:
         raise
     except Exception:

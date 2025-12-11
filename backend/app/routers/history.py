@@ -23,7 +23,6 @@ def get_history():
             raise HTTPException(status_code=503, detail="Database unavailable")
         rows = resp.data or []
 
-
         def preview(text: str, n: int = 60) -> str:
             return text if not text or len(text) <= n else text[:n] + "..."
         items = [
@@ -65,10 +64,9 @@ def get_history_item(item_id: str):
         if not resp.data:
             raise HTTPException(status_code=404, detail="History item not found")
 
-
         r = resp.data
         def preview(text: str, n: int = 60) -> str:
-            return text if not text or len(text) <= n else text[:n] + "..."        
+            return text if not text or len(text) <= n else text[:n] + "..."
         return {
             "id": r.get("id"),
             "text": r.get("text", ""),

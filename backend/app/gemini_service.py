@@ -30,21 +30,19 @@ async def extract_text_from_url(url: str) -> Optional[str]:
             response = await client.get(url, follow_redirects=True)
             response.raise_for_status()
             soup = BeautifulSoup(response.text, "html.parser")
-            # Remove scripts e styles
             for script in soup(["script", "style"]):
                 script.decompose()
-            # Tenta encontrar o conteúdo principal
             main_content = (
                 soup.find("main")
                 or soup.find("article")
-                or soup.find("div", class_=lambda x: x and ("content" in x.lower() or "article" in x.lower()))
+                or soup.find("div", class_=lambda x: x
+                and ("content" in x.lower() or "article" in x.lower()))
                 or soup.find("body")
             )
             if main_content:
                 text = main_content.get_text(separator=" ", strip=True)
             else:
                 text = soup.get_text(separator=" ", strip=True)
-            # Limita o tamanho do texto
             if len(text) > 5000:
                 text = text[:5000] + "..."
             return text if text else None
@@ -57,11 +55,11 @@ async def analyze_with_gemini(text: str) -> str:
     """Analisa o texto usando a API do Gemini para detectar fake news."""
     if not GEMINI_API_KEY:
         return "Erro: API do Gemini não configurada. Configure a variável GEMINI_API_KEY."
-    
     try:
         model = genai.GenerativeModel("gemini-pro")
-        
-        prompt = f"""Analise o seguinte texto e determine se é uma notícia falsa (fake news) ou verdadeira.
+        prompt = f"""Analise o seguinte texto e determinando:
+
+        - Se é uma notícia falsa (fake news) ou verdadeira.
 
         Texto para análise:
         {text}
@@ -90,7 +88,8 @@ async def process_check(text_or_url: str) -> str:
         logging.info(f"Detectada URL: {text_or_url}")
         extracted_text = await extract_text_from_url(text_or_url)
         if not extracted_text:
-            return "Erro: Não foi possível extrair o texto da URL fornecida. Verifique se a URL é válida e acessível."
+            return """Erro: Não foi possível extrair o texto da URL fornecida. 
+            Verifique se a URL é válida e acessível."""
         logging.info(f"Texto extraído da URL ({len(extracted_text)} caracteres)")
         text_to_analyze = f"URL: {text_or_url}\n\nConteúdo extraído:\n{extracted_text}"
     else:
