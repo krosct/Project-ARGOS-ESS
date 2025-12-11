@@ -160,7 +160,7 @@ class TestHistorySchemas:
         long_preview = "A" * 500
         data = {
             "id": "1",
-            "text": f"Texto completo ...",
+            "text": "Texto completo ...",
             "text_preview": long_preview,
             "date": "2023-10-27",
             "status": "VERIFIED"
