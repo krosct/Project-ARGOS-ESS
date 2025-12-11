@@ -24,21 +24,21 @@ async function request(endpoint, method = "GET", body = null, token = null) {
 // AUTENTICAÇÃO
 // =======================
 export async function login(username, password) {
-  return request("/auth/login", "POST", { username, password });
+  return request("/api/auth/login", "POST", { username, password });
 }
 
 // =======================
 // CHECAGEM DE FAKE NEWS
 // =======================
 
-// Envia uma nova checagem
+// Envia uma nova checagem (aceita texto ou URL)
 export async function submitCheck(text, token = null) {
-  return request("/check", "POST", { text }, token);
+  return request("/api/check", "POST", { text }, token);
 }
 
 // Consulta o status de uma checagem existente
 export async function getCheckStatus(id, token = null) {
-  return request(`/check/${id}`, "GET", null, token);
+  return request(`/api/check/${id}`, "GET", null, token);
 }
 
 // =======================
@@ -47,20 +47,20 @@ export async function getCheckStatus(id, token = null) {
 
 // Lista todo o histórico
 export async function getHistory(token = null) {
-  return request("/history", "GET", null, token);
+  return request("/api/history", "GET", null, token);
 }
 
 // Pega um item específico do histórico
 export async function getHistoryItem(id, token = null) {
-  return request(`/history/${id}`, "GET", null, token);
+  return request(`/api/history/${id}`, "GET", null, token);
 }
 
 // Deleta um item específico
 export async function deleteHistoryItem(id, token = null) {
-  return request(`/history/${id}`, "DELETE", null, token);
+  return request(`/api/history/${id}`, "DELETE", null, token);
 }
 
 // Limpa todo o histórico
 export async function clearHistory(token = null) {
-  return request("/history/clear", "DELETE", null, token);
+  return request("/api/history/clear", "DELETE", null, token);
 }
