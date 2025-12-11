@@ -34,10 +34,10 @@ async def extract_text_from_url(url: str) -> Optional[str]:
                 script.decompose()
             main_content = (
                 soup.find("main")
-                or soup.find("article")
-                or soup.find("div", class_=lambda x: x
-                and ("content" in x.lower() or "article" in x.lower()))
-                or soup.find("body")
+                    or soup.find("article")
+                    or soup.find("div", class_=lambda x: x
+                    and ("content" in x.lower() or "article" in x.lower()))
+                    or soup.find("body")
             )
             if main_content:
                 text = main_content.get_text(separator=" ", strip=True)
@@ -88,8 +88,7 @@ async def process_check(text_or_url: str) -> str:
         logging.info(f"Detectada URL: {text_or_url}")
         extracted_text = await extract_text_from_url(text_or_url)
         if not extracted_text:
-            return """Erro: Não foi possível extrair o texto da URL fornecida. 
-            Verifique se a URL é válida e acessível."""
+            return "Erro: Não foi possível extrair o texto da URL fornecido."
         logging.info(f"Texto extraído da URL ({len(extracted_text)} caracteres)")
         text_to_analyze = f"URL: {text_or_url}\n\nConteúdo extraído:\n{extracted_text}"
     else:
