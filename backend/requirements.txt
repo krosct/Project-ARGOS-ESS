@@ -13,6 +13,8 @@ python-dotenv==1.2.1         # Carregamento de variáveis do arquivo .env (usado
 # === Integrações Externas ===
 supabase==2.25.0             # Cliente para conexão com o Supabase (usado em app/supa.py)
 httpx==0.28.1                # Cliente HTTP (dependência do Supabase e requisições assíncronas)
+google-generativeai==0.8.3   # Cliente para API do Google Gemini
+beautifulsoup4==4.12.3       # Parser HTML para extrair texto de URLs
 
 # === Desenvolvimento & Testes ===
 pytest==9.0.2                # Para rodar os testes automatizados (backend/tests/)

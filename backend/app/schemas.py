@@ -19,7 +19,7 @@ class CheckRequest(BaseModel):
         ...,
         min_length=10,
         max_length=5000,
-        description="Texto da notícia para análise"
+        description="Texto da notícia ou URL para análise"
     )
 
 
@@ -43,6 +43,9 @@ class HistoryCreate(BaseModel):
 
 class HistoryItem(BaseModel):
     id: str
-    text_preview: str
+    text: str
+    text_preview: Optional[str] = None
     date: str
     status: str
+    result: Optional[str] = None
+    created_at: Optional[str] = None
