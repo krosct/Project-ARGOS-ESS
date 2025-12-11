@@ -36,10 +36,10 @@ async def extract_text_from_url(url: str) -> Optional[str]:
                 soup.find("main")
                 or soup.find("article")
                 or soup.find(
-                    "div", 
+                    "div",
                     class_=lambda x: x
                     and ("content" in x.lower() or "article" in x.lower())
-                ) 
+                )
                 or soup.find("body")
             )
             if main_content:
