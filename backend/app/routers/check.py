@@ -11,8 +11,7 @@ router = APIRouter(prefix="/api/check", tags=["check"])
 async def process_check_background(check_id: str, text_or_url: str):
     try:
         # Processa com Gemini
-        result = await process_check(text_or_url)
-        
+        result = await process_check(text_or_url)       
         # Atualiza o registro no banco de dados
         update_data = {
             "status": "COMPLETED",
@@ -24,7 +23,6 @@ async def process_check_background(check_id: str, text_or_url: str):
             .eq("id", check_id)
             .execute()
         )
-        
         if resp.data is None and resp.error:
             logging.error(f"Supabase update error: {resp.error}")
     except Exception as e:
