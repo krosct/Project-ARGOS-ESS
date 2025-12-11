@@ -32,12 +32,15 @@ async def extract_text_from_url(url: str) -> Optional[str]:
             soup = BeautifulSoup(response.text, "html.parser")
             for script in soup(["script", "style"]):
                 script.decompose()
-            main_content = (soup.find("main") 
-            or soup.find("article") 
-            or soup.find("div", class_=lambda x: x 
-            and ("content" in x.lower() 
-            or "article" in x.lower())) 
-            or soup.find("body")
+            main_content = (
+                soup.find("main")
+                or soup.find("article")
+                or soup.find(
+                    "div", 
+                    class_=lambda x: x
+                    and ("content" in x.lower() or "article" in x.lower())
+                ) 
+                or soup.find("body")
             )
             if main_content:
                 text = main_content.get_text(separator=" ", strip=True)
