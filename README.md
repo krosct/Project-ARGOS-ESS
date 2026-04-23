@@ -1,6 +1,6 @@
 # 🤖 Project Argos: Plataforma de Detecção de Fake News
 
-![Badge de Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![Badge de Status](https://img.shields.io/badge/status-desenvolvimento%20conclu%C3%ADdo-green)
 ![Badge de Licença](https://img.shields.io/github/license/krosct/Projeto-ESS)
 ![Badge de Ultimo Commit](https://img.shields.io/github/last-commit/krosct/Projeto-ESS)
 ![Badge de Contribuidores](https://img.shields.io/github/contributors/krosct/Projeto-ESS)
